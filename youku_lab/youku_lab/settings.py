@@ -25,7 +25,7 @@ SECRET_KEY = 'dlxu*)+rm=@g)jn&*!p)^*-n2#85=fhu#=4izgpzft4mm!tj%0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.82.39', ]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'devices',
+    'xadmin',
+    'crispy_forms'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -52,7 +54,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'youku_lab.urls'
-
+# AUTH_USER_MODEL = 'devices.UserProfile'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -76,17 +78,22 @@ WSGI_APPLICATION = 'youku_lab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'youku-lab',
+#         'USER': 'root',
+#         'PASSWORD': '1111',
+#         'HOST': 'localhost',
+#         'PORT': 3306,
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'youku-lab',
-        'USER': 'root',
-        'PASSWORD': '1111',
-        'HOST': 'localhost',
-        'PORT': 3306,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'youku_lab.db'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -125,3 +132,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+)
