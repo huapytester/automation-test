@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<div style="text-align: center;margin: 0 auto">
+    <h1>发布会登录</h1>
+    <form action="{% url 'login' %}" method="post">
+        </p><input type="text" name="username" placeholder="请输入你的用户名"><br>
+        <input type="password" name="passwd" placeholder="请输入你的密码"><br>
+        <p style="color: brown;">{{ erro }}</p>
+        <input type="submit" value="提交">
+        {% csrf_token %}
+    </form>
+</div>
+</body>
+</html>
