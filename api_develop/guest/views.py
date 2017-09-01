@@ -1,6 +1,8 @@
 # coding:utf-8
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.generic import View
+from models import Event
+from django.contrib.auth.decorators import login_required
 
 
 # 欢迎页
@@ -29,6 +31,23 @@ def user_action(request):
         return render(request, 'login_action.html', {'username': username})
     else:
         return redirect('/')
+
+
+@login_required
+def event_manage(request):
+    event_list = Event.objects.all()
+    username = request.session.get('user', '')
+    return render(request, 'event_manage.html', {'username': username, 'events': event_list})
+    pass
+
+
+# 发布会名搜索
+@login_required()
+def search_name(request):
+    username = request.session.get('user', '')
+    search_names = request.GET.get("name", '')
+    event_list = Event.objects.filter(title__contains=search_names)
+    return render(request, 'event_manage.html', {'username': username, 'events': event_list})
 
 
 # # 登录页面

@@ -11,10 +11,10 @@ class Event(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'标题')
     limit = models.IntegerField(verbose_name=u'最大容纳观众')
     status_code = {
-        (u'N', u'待发布'),
-        (u'Y', u'已发布'),
+        (u'False', u'待发布'),
+        (u'True', u'已发布'),
     }
-    status = models.CharField(choices=status_code, max_length=10, verbose_name=u'状态', default=u'N')
+    status = models.CharField(choices=status_code, max_length=10, verbose_name=u'状态', default=u'False')
     address = models.CharField(max_length=200, verbose_name='发布会地址')
     start_time = models.DateTimeField('events time')
     describe = models.CharField(max_length=300, verbose_name=u'详情', default=' ')

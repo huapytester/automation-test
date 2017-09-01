@@ -1,4 +1,4 @@
-"""api_develop URL Configuration
+"""youku_lab URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -16,16 +16,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from guest import views
-from django.views import generic
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^welcome/', views.welcome_page, name='hello'),
-    url(r'^user_action/', views.user_action, name='user_action'),
-    url(r'^login/', views.LoginView.as_view(), name='login'),
-    url(r'^$', generic.TemplateView.as_view(template_name='index.html'), name='index'),
-    url(r'^event_manage/', views.event_manage, name='event_manage'),
-    url(r'^search_name/', views.search_name, name='search_name'),
-
 ]
